@@ -8,7 +8,7 @@ import userRouter from "./routes/userRoutes.js";
 import adminRouter from "./routes/adminRoutes.js";
 import jobRouter from "./routes/jobRoutes.js";
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["http://localhost:5173","https://job-nest-pp.vercel.app"];
 
 const app = express();
 const port = process.env.PORT || 5173;
