@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function AdminDashBoard() {
   const [jobs, setJobs] = useState([]);
@@ -34,6 +35,29 @@ function AdminDashBoard() {
       navigate('/admin-login');
     } catch (error) {
       console.error('Logout failed:', error.message);
+    }
+  };
+
+  const handleStatusChange = async (jobId, newStatus) => {
+    try {
+      const res = await axios.post('/api/admin/edit-status', {
+        jobId,
+        newStatus,
+      });
+
+      if (res.data.success) {
+        setJobs((prevJobs) =>
+          prevJobs.map((job) =>
+            job._id === jobId ? { ...job, status: newStatus } : job
+          )
+        );
+        toast.success(res.data.message)
+      } else {
+        alert(res.data.message || 'Status update failed');
+      }
+    } catch (error) {
+      console.error('Status update failed:', error.message);
+      alert('An error occurred while updating status');
     }
   };
 
@@ -76,7 +100,7 @@ function AdminDashBoard() {
 
         <button
           onClick={handleSortToggle}
-          className=" text-black px-4 py-2 rounded hover:bg-gray-100 border-1 cursor-pointer"
+          className="text-black px-4 py-2 rounded hover:bg-gray-100 border-1 cursor-pointer"
         >
           Sort by Applied Date ({sortOrder === 'asc' ? 'Oldest First' : 'Newest First'})
         </button>
@@ -109,7 +133,17 @@ function AdminDashBoard() {
                   <td className="p-3 border">{job.company}</td>
                   <td className="p-3 border text-gray-600">{job.role}</td>
                   <td className="p-3 border">
-                    <span className="px-2 py-1 bg-gray-200 rounded text-sm">{job.status}</span>
+                    <select
+                      value={job.status}
+                      onChange={(e) => handleStatusChange(job._id, e.target.value)}
+                      className="px-2 py-1 bg-gray-100 rounded text-sm"
+                    >
+                      <option value="Applied">Applied</option>
+                      <option value="Interview">Interview</option>
+                      <option value="Offer">Offer</option>
+                      <option value="Rejected">Rejected</option>
+                      <option value="Accepted">Accepted</option>
+                    </select>
                   </td>
                   <td className="p-3 border">
                     {new Date(job.appliedDate).toISOString().split('T')[0]}

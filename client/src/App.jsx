@@ -10,7 +10,6 @@ import DashBoard from './components/DashBoard'
 import AdminDashBoard from './components/AdminDashBoard'
 import AddJob from './components/AddJob'
 import ViewDetails from './components/ViewDetails'
-import EditJob from './components/EditJob'
 
 function App() {
   const isAdminPath=useLocation().pathname.includes("admin");
@@ -28,7 +27,7 @@ function App() {
       <Route path="/dashboard" element={<DashBoard/>} />
       <Route path='/add-job' element={<AddJob/>} />
       <Route path='/job/:id' element={<ViewDetails/>} />
-      <Route path="/edit-job/:id" element={<EditJob />} />
+
 
      </Routes>
     </div>

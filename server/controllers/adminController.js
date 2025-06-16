@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken'
 import Job from '../models/Job.js';
+
+import nodemail from '../config/nodemailer.js';
 export const adminLogin =async (req,res)=>{
     try {
         const {email,password}=req.body;
@@ -86,6 +88,54 @@ export const getAllJobs = async (req, res) => {
     });
   } catch (error) {
     console.error('Admin Get All Jobs Error:', error.message);
+    res.status(500).json({
+      success: false,
+      message: 'Server error',
+    });
+  }
+};
+export const editStatus = async (req, res) => {
+  try {
+    const { jobId, newStatus } = req.body;
+
+    if (!jobId || !newStatus) {
+      return res.status(400).json({
+        success: false,
+        message: 'Job ID and new status are required',
+      });
+    }
+
+    const validStatuses = ['Applied', 'Interview', 'Offer', 'Rejected', 'Accepted'];
+    if (!validStatuses.includes(newStatus)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid status value',
+      });
+    }
+
+    const updatedJob = await Job.findByIdAndUpdate(
+      jobId,
+      { status: newStatus },
+      { new: true }
+    ).populate('user', 'name email');
+    let userEmail=updatedJob.user.email;
+    
+
+    if (!updatedJob) {
+      return res.status(404).json({
+        success: false,
+        message: 'Job not found',
+      });
+    }
+
+     await nodemail(userEmail,`Your Job Status Changed to ${newStatus}`);
+    return res.json({
+      success: true,
+      message: 'Job status updated successfully',
+      job: updatedJob,
+    });
+  } catch (error) {
+    console.error('Edit Job Status Error:', error.message);
     res.status(500).json({
       success: false,
       message: 'Server error',

@@ -66,7 +66,7 @@ function AddJob() {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium">Status</label>
             <select
               name="status"
@@ -80,7 +80,7 @@ function AddJob() {
               <option value="Rejected">Rejected</option>
               <option value="Accepted">Accepted</option>
             </select>
-          </div>
+          </div> */}
 
           <div>
             <label className="block text-sm font-medium">Applied Date</label>
