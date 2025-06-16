@@ -27,6 +27,7 @@ export const register =async (req,res)=>{
             httpOnly:true,
             secure:process.env.NODE_ENV==='production',
             sameSite:process.env.NODE_ENV==='production'?'none':'strict',
+            path:'/',
             maxAge:7*24*60*60*1000,
         })
         return res.json({
@@ -74,6 +75,7 @@ export const login =async (req,res)=>{
         httpOnly:true,
         secure:process.env.NODE_ENV==='production',
         sameSite:process.env.NODE_ENV==='production'?'none':'strict',
+        path:'/',
         maxAge:7*24*60*60*1000,
     })
     return res.json({
@@ -113,9 +115,10 @@ export const isAuth=async (req,res)=>{
 export const logout=async (req,res)=>{
     try {
         res.clearCookie('token',{
-              httpOnly:true,
+             httpOnly:true,
             secure:process.env.NODE_ENV==='production',
-           sameSite:process.env.NODE_ENV==='production'?'none':'strict',
+            sameSite:process.env.NODE_ENV==='production'?'none':'strict',
+            path:'/',
             maxAge:7*24*60*60*1000,
             
         });
