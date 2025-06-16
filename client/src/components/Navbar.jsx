@@ -40,13 +40,13 @@ function Navbar() {
             <>
              <button
           onClick={() => navigate("/admin-dashboard")}
-          className="px-4 py-2 text-sm bg-gray-800 text-white cursor-pointer rounded hover:bg-gray-700 transition"
+          className="px-4 py-2 text-sm bg-gray-500 text-white cursor-pointer rounded hover:bg-gray-700 transition"
         >
           Admin
         </button>
           <button
             onClick={() => navigate("/login")}  
-            className="px-4 py-2 text-sm border text-black rounded hover:bg-gray-500 cursor-pointer transition"
+            className="px-4 py-2 text-sm border text-black rounded hover:bg-gray-100 cursor-pointer transition"
           >
             Applicant Login
           </button></>

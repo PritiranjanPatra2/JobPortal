@@ -88,7 +88,7 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full py-2 border text-black rounded hover:bg-blue-500 transition"
+            className="w-full py-2 border text-black rounded hover:bg-gray-100 cursor-pointer transition"
           >
             {isSignup ? 'Sign Up' : 'Log In'}
           </button>
