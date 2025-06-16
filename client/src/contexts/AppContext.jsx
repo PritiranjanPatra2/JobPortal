@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import Cookies from "js-cookie";
+
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = import.meta.env.VITE_BACKENDURL;
@@ -89,10 +89,7 @@ export const AppContextProvider = ({ children }) => {
       const res = await axios.get("/api/user/logout");
       if (res.data.success) {
         setUser(null);
-         Cookies.remove('token', {
-        path: '/',
-        domain: 'jobnest-b.vercel.app', 
-      });
+        
         toast.success(res.data.message);
         navigate("/");
       } else {
