@@ -144,7 +144,7 @@ export const AppContextProvider = ({ children }) => {
   useEffect(() => {
   
   fetchJobs();
-}, []);
+}, [user]);
 
 
   const value = {
