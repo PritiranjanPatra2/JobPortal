@@ -3,7 +3,7 @@ import { useAppContext } from '../contexts/AppContext';
 
 function AdminLogin() {
   const { loginAdmin,navigate } = useAppContext();
-  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [formData, setFormData] = useState({ email: 'admin@gmail.com', password: 'admin123' });
 
   const handleChange = (e) => {
     setFormData((prev) => ({
