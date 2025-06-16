@@ -57,10 +57,7 @@ export const AppContextProvider = ({ children }) => {
       if (res.data.success) {
         toast.success(res.data.message);
         setUser(res.data.user);
-        Cookies.remove('token', {
-        path: '/',
-        domain: 'jobnest-b.vercel.app', 
-      });
+       
         setShowUserLogin(false);
       } else {
         toast.error(res.data.message);
@@ -92,6 +89,10 @@ export const AppContextProvider = ({ children }) => {
       const res = await axios.get("/api/user/logout");
       if (res.data.success) {
         setUser(null);
+         Cookies.remove('token', {
+        path: '/',
+        domain: 'jobnest-b.vercel.app', 
+      });
         toast.success(res.data.message);
         navigate("/");
       } else {
