@@ -131,7 +131,7 @@ export const AppContextProvider = ({ children }) => {
             toast.error(res.data.message);
             return;
         }else{
-            toast.success(res.data.message);
+            // toast.success(res.data.message);
             setJobs(res.data.jobs); 
         }
    

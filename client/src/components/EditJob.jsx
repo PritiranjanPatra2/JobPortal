@@ -70,7 +70,7 @@ function EditJob() {
           <span className="text-lg">←</span>
           <span>Return</span>
         </button>
-        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
+        <h2 className="text-2xl font-bold mb-6 text-center text-black-600">
           Edit Job Application
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -137,7 +137,7 @@ function EditJob() {
 
           <button
             type="submit"
-            className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-500 transition"
+            className="w-full py-2 bg-gray-200 cursor-pointer text-black rounded hover:bg-gray-500 transition"
           >
             Save Changes
           </button>

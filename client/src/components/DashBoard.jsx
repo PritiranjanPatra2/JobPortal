@@ -32,7 +32,7 @@ function DashBoard() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 border rounded bg-white cursor-pointer hover:bg-gray-300"
+            className="px-3 py-2 border rounded bg-white cursor-pointer hover:bg-gray-100"
           >
             <option value="All">All Statuses</option>
             <option value="Applied">Applied</option>
@@ -43,14 +43,14 @@ function DashBoard() {
           </select>
 
           <button
-            className="px-4 py-2 bg-white text-black rounded border hover:bg-gray-300 cursor-pointer"
+            className="px-4 py-2 bg-white text-black rounded border hover:bg-gray-100 cursor-pointer"
             onClick={toggleSortOrder}
           >
             Sort by Applied Date ({sortOrder === 'asc' ? 'Oldest First' : 'Newest First'})
           </button>
 
           <button
-            className="px-4 py-2 bg-white border text-black rounded hover:bg-gray-300"
+            className="px-4 py-2 bg-white border text-black rounded hover:bg-gray-100"
             onClick={() => navigate('/add-job')}
           >
              Add Job Application

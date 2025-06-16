@@ -40,7 +40,7 @@ function AddJob() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-lg">
-        <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">Add Job Application</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center text-black-600">Add Job Application</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium">Company</label>
@@ -105,7 +105,7 @@ function AddJob() {
 
           <button
             type="submit"
-            className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-500 transition"
+            className="w-full py-2 bg-gray-200 cursor-pointer text-black rounded border hover:bg-gray-500 transition"
           >
             Add Job
           </button>
