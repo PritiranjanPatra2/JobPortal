@@ -74,9 +74,11 @@ export const AppContextProvider = ({ children }) => {
         setShowUserLogin(false);
       } else {
         toast.error(res.data.message);
+        navigate("/login");
       }
     } catch {
       toast.error("Login failed");
+      navigate("/login");
     }
   };
 
